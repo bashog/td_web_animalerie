@@ -1,0 +1,88 @@
+{% extends 'animalerie/base.html' %}
+{% load static %}
+
+
+{% block title %}
+    Liste animaux
+{% endblock %}
+
+{% block animal_list_active_bar %}active{% endblock %}
+
+{% block content %}
+    <div class="container">
+
+        <div class="row">
+            <div class="col">
+                <div class="shadow p-3 mb-5 bg-light rounded border border-dark rounded text-center"><h2>Liste des animaux</h2></div>
+
+                {% for animal in animaux %}
+
+                    <div class="card mb-3 shadow bg-white rounded border-info" style="max-width: 540px;">
+                      <div class="row d-flex flex-wrap align-items-center">
+                        <div class="col-md-5">
+                          <img src="{% static 'animalerie/img/carre_noir.jpg' %}" class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-7">
+                          <div class="card-body">
+                              <h2 class="card-title text-center">{{ animal.id_animal }}</h2>
+                              <ul class="list-group list-group-flush">
+                                  <li class="list-group-item">Type : <span class="badge badge-info">{{ animal.type }}</span></li>
+                                  <li class="list-group-item">Race : <span class="badge badge-info">{{ animal.race }}</span></li>
+                                  <li class="list-group-item">Localisation : <span class="badge badge-warning">{{ animal.lieu }}</span></li>
+                                  <li class="list-group-item">Etat : <span class="badge badge-warning">{{ animal.etat }}</span></li>
+                              </ul>
+                              <div class="card-body text-center">
+                                  <a href="{% url 'animal_detail' id_animal=animal.id_animal %}" class="btn btn-info btn-block" data-toggle="tooltip" data-placement="top" title="Nourrir - Divertir - Coucher - Réveiller">Action</a>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                {% endfor %}
+                </div>
+
+
+
+
+            <div class="col">
+                <div class="shadow p-3 mb-5 bg-light rounded border border-dark text-center"><h2>Liste des équipements</h2></div>
+
+                {% for equipement in equipements %}
+
+                    <div class="card mb-3 shadow rounded border-info" style="max-width: 540px;">
+                      <div class="row d-flex flex-wrap align-items-center">
+                        <div class="col-md-6">
+                          <img src="{{equipement.photo.url }}" class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-6">
+                          <div class="card-body">
+                              <h2 class="card-title text-center">{{ equipement.id_equipement }} </h2>
+                              <ul class="list-group list-group-flush">
+                                  <li class="list-group-item">
+                                      {% if equipement.disponibilite == 'libre' %}Etat : <span class="badge badge-success">libre</span>
+                                      {% elif equipement.disponibilite == 'occupe' %}Etat : <span class="badge badge-danger">occupé</span>
+                                      {% endif %}
+                                  </li>
+                              </ul>
+                              <div class="card-body text-center">
+                                  <a href="{% url 'equipement_detail' id_equipement=equipement.id_equipement %}" class="btn btn-outline-info">Plus de détails</a>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                {% endfor %}
+                </div>
+
+
+
+
+
+
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
+

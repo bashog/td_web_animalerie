@@ -1,0 +1,42 @@
+{% extends 'animalerie/base.html' %}
+{% load static %}
+
+{% block title %}
+    En détail
+{% endblock %}
+
+
+{{% block content %}
+
+    <div class="container shadow p-5 mb-2 bg-white rounded text-center">
+
+        {% if message != ''%}
+            {% if flag == 'warning'%}
+                <!-- Error Alert -->
+                <div class="alert alert-danger d-flex align-items-center fade show">
+                    <i class="bi-exclamation-octagon-fill"></i>
+                    <strong class="mx-2">Attention!</strong> {{ message }}
+                </div>
+            {% endif %}
+
+            {% if flag == 'success'%}
+                <!-- Success Alert -->
+                <div class="alert alert-success d-flex align-items-center fade show">
+                    <i class="bi-check-circle-fill"></i>
+                    <strong class="mx-2">Super!</strong> {{message}}
+                </div>
+            {% endif %}
+        {% endif %}
+
+
+        <h3 class="font-weight-bold">{{ animal.id_animal }}</h3>
+        <form method="POST" class="lieu-form">
+            {% csrf_token %}
+            <div class="mb-3">
+                <b> Changer : </b> {{ form.as_ul }}
+            </div>
+            <button type="submit" class="btn btn-outline-info">OK</button>
+            <a class="btn btn-info" href="{% url 'animal_list' %}">Back</a>
+        </form>
+    </div>
+{% endblock %}

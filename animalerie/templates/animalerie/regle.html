@@ -1,0 +1,28 @@
+{% extends 'animalerie/base.html' %}
+{% load static %}
+
+{% block title %}
+    Règles
+{% endblock %}
+
+
+{{% block content %}
+
+        <div class="card mb-3 shadow bg-white rounded border-info text-center mx-auto" style="max-width: 540px;">
+            <div class="card-body">
+                <h2 class="card-title text-center">Les règles de l'animalerie:</h2>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><b>R1 :</b> L'animalerie contient un certains nombres d'animaux et des équipements (litière, nid, mangeoire,roue)</li>
+                    <li class="list-group-item"><b>R2 :</b> Lorsqu'un animal quitte un lieu il devient libre (après avoir été occupé) sauf pour la litière qui peut accueillir tous les animaux en même temps</li>
+                    <li class="list-group-item"><b>R3 :</b> Seul un animal affamé accepte d'être nourri dans la mangeoire après s'être réveiller du nid</li>
+                    <li class="list-group-item"><b>R4 :</b> Seul un animal repus accepte de faire de l'exercice après avoir manger dans la mangeoire</li>
+                    <li class="list-group-item"><b>R5 :</b> Seul un animal fatigué accepte de dormir après avoir fait de l'exerciced dans la roue</li>
+                    <li class="list-group-item"><b>R6 :</b> Seul un animal endormi peut être réveillé et envoyé dans la litière après avoir dormi dans le nid</li>
+                </ul>
+                <div class="card-body text-center">
+                    <a href="{% url 'animal_list'%}" class="btn btn-primary">Back</a>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}

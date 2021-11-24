@@ -1,0 +1,8 @@
+
+{
+    "Tic":{"RACE":"tamia","TYPE":"rongeur","ETAT":"affame","LIEU":"litiere"},
+    "Tac":{"RACE":"tamia","TYPE":"rongeur","ETAT":"affame","LIEU":"litiere"},
+    "Patrick":{"RACE":"hamster","TYPE":"rongeur","ETAT":"affame","LIEU":"litiere"},
+    "Totoro":{"RACE":"ili pika","TYPE":"rongeur","ETAT":"repus","LIEU":"mangeoire"},
+    "Pocahontas":{"RACE":"opossum","TYPE":"marsupial","ETAT":"endormi","LIEU":"nid"}
+}

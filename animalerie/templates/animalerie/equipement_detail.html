@@ -1,0 +1,31 @@
+{% extends 'animalerie/base.html' %}
+{% load static %}
+
+{% block title %}
+    En détail
+{% endblock %}
+
+
+{{% block content %}
+
+    <div class="container shadow p-5 mb-2 bg-white rounded text-center">
+            <div class="card-body">
+              <h2 class="card-title text-center">{{ equipement.id_equipement }} </h2>
+              <ul class="list-group list-group-flush">
+                  <li class="list-group-item">
+                      {% if equipement.disponibilite == 'libre' %}Etat : <span class="badge badge-success">libre</span>
+                      {% elif equipement.disponibilite == 'occupe' %}Etat : <span class="badge badge-danger">occupé</span>
+                      {% endif %}
+                  </li>
+                  <li class="list-group-item">
+                      Occupé par :  {% for animal in occupants %}
+                                        <a href="{% url 'animal_detail' id_animal=animal.id_animal %}" class="badge badge-warning">{{ animal.id_animal }}</a>
+                                    {% endfor %}
+                  </li>
+              </ul>
+              <div class="card-body text-center">
+                  <a href="{% url 'animal_list'%}" class="btn btn-info">Back</a>
+              </div>
+        </div>
+    </div>
+{% endblock %}

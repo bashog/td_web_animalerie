@@ -1,0 +1,24 @@
+{% extends 'animalerie/base.html' %}
+
+
+{% block title %}
+    Ajouter un animal
+{% endblock %}
+
+{% block add_animal_active_bar %}active{% endblock %}
+
+{% block header %}
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="container shadow p-5 mb-5 bg-white rounded text-center">
+        <h3 class="font-weight-bold">Nouvelle animal</h3>
+        <p><br></p>
+        <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Save</button>
+        </form>
+    </div>
+{% endblock %}

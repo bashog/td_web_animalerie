@@ -1,0 +1,61 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8" />
+
+        <title>{% block title %}{% endblock %}</title>
+
+	    <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    </head>
+
+    <body>
+
+
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-info sticky-top">
+        <a class="navbar-brand" href="{% url 'animal_list' %}">ANIMALERIE</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-item nav-link {% block animal_list_active_bar %}{% endblock %}" href="{% url 'animal_list' %}">Accueil</a>
+              <a class="nav-item nav-link {% block regle_active_bar %}{% endblock %}" href="{% url 'regle' %}">Règles</a>
+              <a class="nav-item nav-link {% block add_animal_active_bar %}{% endblock %}" href="{% url 'add_animal' %}">Ajouter un animal</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    {% block header %}{% endblock %}
+
+    <!-- Page Content -->
+    {% block content %}{% endblock %}
+
+    </section>
+
+    <hr/>
+
+
+    <!-- Footer-->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <ul class="list-inline text-center">
+                        <p class="copyright text-muted">Copyright &copy; L'animalerie de Basile</p>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+	</body>
+
+</html>

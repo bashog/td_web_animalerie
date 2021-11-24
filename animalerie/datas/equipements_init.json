@@ -1,0 +1,6 @@
+{"litiere":{"DISPONIBILITE":"libre"},
+  "mangeoire":{"DISPONIBILITE":"occupe"},
+  "roue":{"DISPONIBILITE":"libre"},
+  "nid":{"DISPONIBILITE":"occupe"}
+}
+Animal.objects.create(id_animal=, race=, type=, etat=, lieu=)

@@ -1,0 +1,5 @@
+python manage.py shell
+from animalerie.models import Animal, Equipement
+import animalerie.controleur as ct
+Animal.objects.all()
+.objects.get(id_animal='')

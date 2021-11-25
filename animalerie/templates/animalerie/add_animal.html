@@ -14,11 +14,33 @@
 {% block content %}
 
     <div class="container shadow p-5 mb-5 bg-white rounded text-center">
+
+        {% if message != ''%}
+            {% if flag == 'warning'%}
+                <!-- Error Alert -->
+                <div class="alert alert-danger d-flex align-items-center fade show">
+                    <i class="bi-exclamation-octagon-fill"></i>
+                    <strong class="mx-2">Attention!</strong> {{ message }}
+                </div>
+            {% endif %}
+
+            {% if flag == 'success'%}
+                <!-- Success Alert -->
+                <div class="alert alert-success d-flex align-items-center fade show">
+                    <i class="bi-check-circle-fill"></i>
+                    <strong class="mx-2">Super!</strong> {{message}}
+                </div>
+            {% endif %}
+        {% endif %}
+
+
         <h3 class="font-weight-bold">Nouvelle animal</h3>
         <p><br></p>
-        <form method="POST" class="post-form">{% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Save</button>
+        <form method="POST" class="post-form" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-outline-info">OK</button>
+            <a class="btn btn-info" href="{% url 'animal_list' %}">Back</a>
         </form>
     </div>
 {% endblock %}

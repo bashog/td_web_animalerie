@@ -10,4 +10,4 @@ class MoveForm(forms.ModelForm):
 class AddForm(forms.ModelForm):
     class Meta:
         model = Animal
-        fields = ('id_animal','type', 'race',)
+        fields = ('id_animal','type', 'race', 'photo',)

@@ -16,16 +16,21 @@ def regle(request):
     return render(request, 'animalerie/regle.html')
 
 def add_animal(request):
-    form = AddForm
-    return render(request, 'animalerie/add_animal.html', {'form': form})
-
-def equipement_detail(request, id_equipement):
-    equipement = Equipement.objects.get(id_equipement=id_equipement)
-    occupants_id_animal = ct.cherche_occupant(id_equipement)
-    occupants = [Animal.objects.get(id_animal=id_animal) for id_animal in occupants_id_animal ]
-    context = {'equipement': equipement, 'occupants': occupants}
-    return render(request, 'animalerie/equipement_detail.html', context)
-
+    flag, message = '', ''
+    if request.method == "POST":
+        form = AddForm(request.POST, request.FILES)
+        if form.is_valid():
+            animal = form.save(commit=False)
+            animal.photo = request.FILES.get('photo')
+            animal.etat = 'affame'
+            animal.lieu = Equipement.objects.get(id_equipement='litiere')
+            animal.save()
+            flag, message = 'success', "Félicitation à " + animal.id_animal + " pour son entrée dans l'animalerie"
+        else:
+            flag, message = 'warning', 'Attention les champs sont incorrectement remplis'
+    else:
+        form = AddForm()
+    return render(request, 'animalerie/add_animal.html', {'form': form, 'message': message, 'flag': flag})
 
 def animal_detail(request, id_animal):
     animal = Animal.objects.get(id_animal=id_animal)
@@ -54,4 +59,11 @@ def animal_detail(request, id_animal):
     return render(request,
                   'animalerie/animal_detail.html',
                   {'animal': animal, 'form': form, 'message': message, 'flag': flag})
+
+def equipement_detail(request, id_equipement):
+    equipement = Equipement.objects.get(id_equipement=id_equipement)
+    occupants_id_animal = ct.cherche_occupant(id_equipement)
+    occupants = [Animal.objects.get(id_animal=id_animal) for id_animal in occupants_id_animal ]
+    context = {'equipement': equipement, 'occupants': occupants}
+    return render(request, 'animalerie/equipement_detail.html', context)
 

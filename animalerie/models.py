@@ -4,7 +4,7 @@ from django.db import models
 class Equipement(models.Model):
     id_equipement = models.CharField(max_length=100, primary_key=True)
     disponibilite = models.CharField(max_length=20)
-    photo = models.ImageField(upload_to='media/id_equipement')
+    photo = models.ImageField(upload_to='id_equipement')
 
     def __str__(self):
         return self.id_equipement
@@ -17,7 +17,7 @@ class Animal(models.Model):
     etat = models.CharField(max_length=20)
     type = models.CharField(max_length=20)
     race = models.CharField(max_length=20)
-    photo = models.CharField(max_length=200)
+    photo = models.ImageField(upload_to='id_animal')
     lieu = models.ForeignKey(Equipement, on_delete=models.CASCADE)
 
     def change_lieu(self, nouveau_lieu):

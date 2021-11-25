@@ -20,7 +20,7 @@
                     <div class="card mb-3 shadow bg-white rounded border-info" style="max-width: 540px;">
                       <div class="row d-flex flex-wrap align-items-center">
                         <div class="col-md-5">
-                          <img src="{% static 'animalerie/img/carre_noir.jpg' %}" class="img-fluid rounded-start" alt="...">
+                          <img src="{{MEDIA_URL}}{{animal.photo.url}}" class="img-fluid rounded-start" alt="...">
                         </div>
                         <div class="col-md-7">
                           <div class="card-body">
@@ -52,7 +52,7 @@
                     <div class="card mb-3 shadow rounded border-info" style="max-width: 540px;">
                       <div class="row d-flex flex-wrap align-items-center">
                         <div class="col-md-6">
-                          <img src="{{equipement.photo.url }}" class="img-fluid rounded-start" alt="...">
+                          <img src="{{MEDIA_URL}}{{equipement.photo.url}}" class="img-fluid rounded-start" alt="...">
                         </div>
                         <div class="col-md-6">
                           <div class="card-body">
